@@ -1,0 +1,45 @@
+/* CSS Document */
+.tiao{overflow: hidden; width:1150px;}
+.header1{width:100px; margin:0 auto; float: left; margin-left: 200px;}
+.header1 img{width:75px; height:70px;  margin:5px 0;}
+
+.content1{ background-color:#B6DFF7; no-repeat:center; position:relative;}
+.content1 .loginbox{width:1024px;height:550px; margin:0 auto; background:url(../images/bg_login.png) no-repeat center; position:relative;}
+.content1 .loginbox .zhuce{float: left; margin-left: 700px; margin-top: 70px;}
+.content1 .loginform{width:385px; background-color:#FFF;position:absolute; top:110px; right:0;}
+.loginform h1{ font-size:20px; color:#666689; margin:20px 0 0 20px;}
+.loginform .msg1{width:340px; color:#666; margin:10px 0 10px 20px; background-color:fff6d2;border:1px solid #ffe57d; overflow:hidden}
+.loginform .msg1 .light{ width:18px; height:18px; float:left; background:url(../images/icons/icon_light_03.png) no-repeat center; margin:3px 8px;}
+.loginform .msg1 .txt{height:18px; line-height:18px; float:left; margin:3px 0}
+.loginform .si_box{width:340px;overflow:hidden; margin:0 0 20px 20px;border:1px solid #bdbdbd}
+.usr_span,.pwd_span{width:38px; height:38px; float:left;border-right:1px solid #bdbdbd; background:#f3f3f3 url(../images/icons/icon_04.jpg) no-repeat center;}
+.pwd_span{ background:#f3f3f3 url(../images/icons/icon_05.jpg) no-repeat center;}
+.loginform .si_box input{ float:left; border:none;width:200px; height:20px; margin:9px 10px; }
+
+.forget_box{
+	width:340px;
+	margin:	-12px 0 0 20px;
+	overflow:hidden;
+}
+.forget_box .box1{
+	float:left;
+	line-height:20px;
+}
+.forget_box .box2{
+	float:right;
+	line-height:20px;
+	background:url(../images/icons/icon_06.png) no-repeat left;
+	padding-left:25px;
+}
+
+.loginform input.btn_submit{
+	 width:338px;
+	 height:33px;
+	 background-color:#e4393c;
+	 border:1px solid #cb2a2d;
+	 margin:28px 0 28px 20px;
+	 color:#FFF;
+	 font-size:20px;
+	 cursor:pointer;
+ }
+.footer1 .icp{text-align: center;}

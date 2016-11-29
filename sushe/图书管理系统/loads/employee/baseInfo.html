@@ -1,0 +1,231 @@
+<style>
+    .table {
+        color: white;
+        text-align: center;
+        border: 2px solid #DDF6F2;
+    }
+
+    tbody tr:hover {
+        cursor: pointer;
+        background: #8BCCd2
+    }
+
+    thead td span {
+        margin-left: 10px;
+    }
+
+    .modal-title {
+        text-align: center
+    }
+
+    .gender {
+        position: relative;
+        top: 3px;
+        left: 20px;
+    }
+
+    .modal-header {
+        color: white;
+        border-radius: 5px
+    }
+
+    .position {
+        margin-top: 10px;
+    }
+    .birthday{
+        margin-top:10px;
+        margin-left:0;
+    }
+    .zhiwei {
+        margin-right: 10px;
+        position: relative;
+        left: 27px;
+        top: 5px;
+        font-size: 17px;
+    }
+
+    .scroll {
+        height: 340px;
+        overflow-y: scroll;
+        border: 1px solid white;
+    }
+</style>
+<script>
+    $(function () {
+        $(".wrap").hide().fadeIn();
+        $(".modal_button").mousedown(function () {
+            $(".modal_button").css("outline", "none");
+        });
+        $('.form_date').datetimepicker({
+            language:  'fr',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
+        });
+    });
+
+</script>
+<div class="wrap">
+    <div>
+        <div class="collapse navbar-collapse">
+            <form action="javascript:void(0)" class="navbar-form navbar-left">
+                <div class="form-group">
+                    <select class="form-control" ng-model="baseInfo.modal.key">
+                        <option value="">请选择</option>
+                        <option value="name">书名</option>
+                        <option value="gender">作者</option>
+                        <option value="age">类型</option>
+                        <option value="position">国家</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Search" ng-model="baseInfo.modal.val">
+                </div>
+                <button type="submit" class="button button-small button-raised
+                button-longshadow button-pill button-inverse button-glow"
+                        ng-click="baseInfo.searchMember()">
+                    <span class="glyphicon glyphicon-search"></span></button>
+            </form>
+        </div>
+    </div>
+    <div class="scroll">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <td>编号</td>
+                <td>书名</td>
+                <td>作者</td>
+                <td>类型</td>
+                <td>国家<span class="glyphicon glyphicon-map-marker"></span></td>
+                
+                <td>入库时间<span class="glyphicon glyphicon-calendar"></span></td>
+                <td>操作<span class="glyphicon glyphicon-wrench"></span></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in baseInfo.members |filter:baseInfo.criteria" 
+				ng-click="changeCheck(item.id,$event)">
+                <td><input type="checkbox" ng-model="item.checked" ng-click="changeCheck(item.id,$event)"></td>
+                <td>{{item.name}}</td>
+                <td>{{item.na}}</td>
+                <td>{{item.gender}}</td>
+                <td>{{item.position}}<span class="{{baseInfo.judge(item.position)}}"></span></td>
+               
+                <td>{{item.joinDate}}</td>
+                <td>
+                    <button class="button button-tiny button-raised button-plain button-pill button-longshadow"
+                            ng-click="baseInfo.showUpdPage(item.id,$event)">修改
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="option_button">
+        <button class="button button-plain button-pill button-small button-3d button-raised button-longshadow"
+                ng-click="baseInfo.showAddPage()">添加
+        </button>
+        <button class="button button-plain button-pill button-small button-3d button-raised button-longshadow"
+                ng-click="baseInfo.delMember()">删除
+        </button>
+        <button class="button button-plain button-pill button-small button-3d button-raised button-longshadow"
+                ng-click="baseInfo.allSelect()">全选
+        </button>
+    </div>
+</div>
+<!--*********------模态框--------*********-->
+<div class="modal fade" id="baseInfoModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bgcolor">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">
+                    {{baseInfo.modalTitle}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form action="javascript:void(0)" method="post" class=" form-horizontal" name="form">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group {{form.name.$valid?'has-success':'has-error'}}">
+                                <span class="input-group-addon">书名</span>
+                                <input type="text" class="form-control" ng-model="newMember.name"
+                                       name="name" ng-minlength="2" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="input-group {{form.name.$valid?'has-success':'has-error'}}">
+                                <span class="input-group-addon">作者</span>
+                                <input type="text" class="form-control" ng-model="newMember.na"
+                                       name="na" ng-minlength="2" required>
+                            </div>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group">
+                                <span class="gender">类型：</span>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="gender" value="文学" ng-model="newMember.gender"> 文学
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="gender" value="科幻" ng-model="newMember.gender"> 科幻
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="radio" name="gender" value="励志" ng-model="newMember.gender"> 励志
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-3 zhiwei">国家：</div>
+                                    <div class="col-lg-8 {{form.position.$valid?'has-success':'has-error'}}">
+                                        <select class="form-control" ng-model="newMember.position" name="position"
+                                                required>
+                                            <option value="">请选择</option>
+                                            <option value="中国">中国</option>
+                                            <option value="美国">美国</option>
+                                            <option value="德国">德国</option>
+                                            <option value="法国">法国</option>
+                                            <option value="英国">英国</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row birthday">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <div class="input-group date form_date" data-date=""
+                                     data-date-format="mm-dd" data-link-field="dtp_input2"
+                                     data-link-format="yyyy-mm-dd">
+                                    <span class="input-group-addon">入库时间</span>
+                                    <input class="form-control" size="16" type="text" ng-model="newMember.birthday" readonly>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-remove"></span></span>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="button-pill button-small bgcolor modal_button"
+                        ng-click="baseInfo.option=='add'?baseInfo.addMember():baseInfo.updMember()"
+                        ng-disabled="form.$invalid">提交
+                </button>
+                <button class="button-pill button-small bgcolor modal_button" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>``
+</div>

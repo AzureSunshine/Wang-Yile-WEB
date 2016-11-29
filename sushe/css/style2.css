@@ -1,0 +1,14 @@
+/* CSS Document */
+.tiao{overflow: hidden; width:1150px;height: 78px;}
+.header1{width:100px; margin:0 auto; float: left; margin-left: 200px;}
+.header1 img{width:75px; height:70px;  margin:5px 0;}
+.tiao .youce{  float:right;  margin-top: 47px;}
+.tiao .youce span{font-size: 15px; }
+
+
+.content1{ background-color:#B6DFF7; no-repeat:center; position:relative;}
+.content1 .zi{width: 1024px; height: 45px; margin-left: 560px;}
+.content1 span{color: red;font-size: 14px; margin-top: 20px;}
+.content1 .xuexiao{width:1024px;height:605px; margin:0 auto; background:url(../images/xuexiao.png) no-repeat center; position:relative;}
+
+.z1{text-align: center;}

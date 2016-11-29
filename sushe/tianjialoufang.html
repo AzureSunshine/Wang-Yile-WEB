@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改</title>
+    <style type="text/css">
+        *{
+            padding:0px;
+            margn:0px;
+        }
+        table#stuRecordTable{width:600px; margin-top: 50px; margin-left:100px; text-align: center;}
+        table#stuRecordTable tr{height:30px;}
+    </style>
+    <script type="text/javascript">
+        function $(eleStr){
+            switch(eleStr.substr(0,1)){
+                case "#":
+                    return document.getElementById(eleStr.substr(1));
+                    break;
+                case ".":
+                    return document.getElementsByClassName(eleStr.substr(1));
+                    break;
+                case "_":
+                    return document.getElementsByName(eleStr.substr(1));
+                    break;
+                default:
+                    return document.getElementsByTagName(eleStr);
+                    break;
+            }
+        }
+
+        onload = function(){
+
+            doOperator();
+        }
+
+        function doOperator(){
+
+            var updates =$(".update");
+            var dels =$(".del");
+            for (var i = 0; i < dels.length; i++) {
+                dels[i].onclick =   function(){
+                    if(confirm("是否确定删除？")){  //提示是否删除
+                        //var row = this.parentNode.parentNode; //取到tr对象
+                        //row.parentNode.removeChild(row);  //移除tr
+                        $("#stuRecordTable").deleteRow(this.parentNode.parentNode.rowIndex);
+                    }
+                }
+                updates[i].onclick = function(){
+                    var operatorCell = this.parentNode.parentNode.getElementsByTagName("td")[1]; //取到要操作的td对象
+                    //1.修改按钮上有两个功能：修改，确定修改
+                    if(this.value == "修改"){
+                        this.value = "确定";
+                        operatorCell.innerHTML ="<input value='"+operatorCell.innerHTML+"'/>";//把内容变成文本框
+                        //做修改操作
+                    }else{
+                        operatorCell.innerHTML =operatorCell.getElementsByTagName("input")[0].value;//把文本框变成内容
+                        this.value = "修改";
+                        //做确定修改
+                    }
+                }
+            }
+        }
+        function addRow(){
+            var rs = $("#stuRecordTable").rows;  //table取到所有的行
+            var insertR = $("#stuRecordTable").insertRow(rs.length-1); //给表格添加一行(不包单元格)
+            //insertR.innerHTML = rs[1].innerHTML;
+            var c1 = insertR.insertCell(0);
+            c1.innerHTML = "7#";
+            var c2 = insertR.insertCell(1);
+            c2.innerHTML = Math.round(Math.random() * 101);
+            var c3 = insertR.insertCell(2);
+            c3.innerHTML ='<input type="button" value="删除" class="del"/><input type="button" value="修改" class="update"/>';
+
+            doOperator();
+
+            var cs = rs[1].cells; //取到当前行的所有单元格
+            //alert(cs[1].innerHTML);
+        }
+    </script>
+</head>
+<body>
+<table id="stuRecordTable"  cellpadding="0" cellspacing="0"width="283" height="233">
+    <tr>
+        <td height="42" colspan="2">宿舍房屋信息修改</td>
+    </tr>
+    <tr>
+        <td width="34" height="38">楼号</td>
+        <td width="237">管理人员</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td height="45">1#</td>
+        <td>孙丽丽 189479354</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td height="46">2#</td>
+        <td>周哈哈 1962489214</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td height="48">3#</td>
+        <td>吴咳咳 1311789461</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td height="48">4#</td>
+        <td>费问你 1535152121</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td height="48">5#</td>
+        <td>王汉华 1311789461</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td height="48">6#</td>
+        <td>马拉维 1311789461</td>
+        <td><input type="button" value="删除" class="del"/>
+            <input type="button" value="修改" class="update"/></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="添加" onclick="addRow()"/></td>
+        <td colspan="2">
+            <a href="1gai.html"><input type="button" value="返回"></a></td>
+    </tr>
+</table>
+</body>
+</html>

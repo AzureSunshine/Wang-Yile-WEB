@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link rel="shortcut icon" href="bgimg/body/firefox.ico" type="image/x-icon">
+	<style>
+		:root{
+			background: url(bgimg/body/ocean.jpg);;
+		}
+		body{
+			color:#fff;
+		}
+		section{
+			width: 500px;
+			height: 250px;
+			background-color: rgba(0,0,0,0.3);
+			position: relative;
+			margin-top:100px;
+			margin-left: 20px;
+
+		}
+		h2{
+			font-family: "微软雅黑";
+			font-size: 30px;
+			float: left;
+			margin-left: 20px;
+			margin-top: 20px;
+			text-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+		}
+		form{
+			width:450px;
+			height: 200px;
+			
+			float: left;
+			margin-top:0px;
+			margin-left: 20px;
+		}
+
+		
+
+
+		form>input{
+			background: rgba(0,0,0,0.3);
+			border: 0;
+			height: 20px;
+			color: rgba(255,255,255,0.8);
+			padding: 10px;
+			margin-top: 10px;
+		}
+		
+		input:nth-of-type(1){
+			width: 350px;
+		}
+		input:nth-of-type(2){
+			width: 200px;
+		}
+		
+		canvas{
+			float: right;
+			margin-top: 10px;
+			margin-right: 80px;
+		}
+		button{
+			margin-top: 10px;
+			color: #fff;
+			/*background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%); ?*/
+
+   background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.9));
+			border: 0px;
+			padding-right: 10px;
+			padding-left: 10px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h2>登录</h2>
+		<form method="post" action="index.html">
+		<input type="email" name="" placeholder="请输入邮箱账号" required id="email">
+		<input type="text" name="" placeholder="请输入验证码" required id="text">
+		<canvas width="120px" height="40px"  onclick="change()"></canvas>
+		
+		<button type="button">登录<a href="index.html"></a></button>
+		</form>
+		
+	</section>
+	<script type="text/javascript" src="JS/sysck.js"></script>
+	<script type="text/javascript" src="JS/login.js"></script>
+	
+</body>
+</html>

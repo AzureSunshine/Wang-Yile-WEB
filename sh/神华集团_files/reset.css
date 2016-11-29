@@ -1,0 +1,120 @@
+html
+{
+    overflow-y: scroll;
+    width:100%;
+    height:100%;
+}
+body, div, td
+{
+    line-height: 1.4em;
+}
+body, div, ul, ol, li, h1, h2, h3, h4, h5, h6, form, fieldset, legend, input, textarea, p, th, td, dl, dt, dd
+{
+    margin: 0;
+    padding: 0;
+    font-size:14px;
+    font-weight:normal;
+    font-family:"Microsoft Yahei",arial;
+}
+html,body{background-color:#fff; /*min-width:1170px;*/}
+/*body {min-width:960px;_width:960px;}*/
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+img
+{
+    border: 0 none;
+	margin:auto;
+	padding:0;
+	display:block;
+}
+address, caption, cite, code, dfn, em, th, var
+{
+    font-style: normal;
+    font-weight: normal;
+}
+ul li,ol li
+{
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+h1, h2, h3, h4, h5, h6
+{
+    vertical-align: baseline;
+    zoom: 1;
+}
+input, textarea, select, button
+{
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+button
+{
+    border: none;
+    padding: 0;
+}
+button::-moz-focus-inner{
+    border: none;
+}
+input[type=radio], input[type=checkbox]
+{
+    vertical-align: middle;
+}
+input{
+    outline:0 none;
+}
+input.checkbox {vertical-align:middle;}
+* html input
+{
+    vertical-align: baseline;
+}
+textarea
+{
+    overflow: auto;
+}
+fieldset{
+    border:0 none
+}
+a:focus
+{
+    outline-style: none;
+    outline-width: 0;
+}
+a{text-decoration:none; color:#666;}
+a:hover{text-decoration:underline;}
+ul:after
+{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/*-------------------------------���ҳ��ʽ��ʼ��------------------------------------*/
+.page_num{padding-top:30px; height:50px; overflow:hidden; width:96%; margin:0 auto;}
+
+#page_div{line-height:20px; color:#666; float:right;}
+
+
+#pagination_input{ width:30px; height:20px; line-height:20px; color:#f00; vertical-align: middle; overflow:hidden; border:1px solid #ccc; font-size:12px;}
+#pagination_btn{width: 40px;height: 25px;line-height: 25px;background: #f0f0f0;border: 1px #ccc solid;vertical-align: middle;font-family: "΢���ź�";}
+
+#page_div .pagination_index{border:1px #cccccc solid;padding:0 8px; margin:0 4px;float: left; height:29px; line-height:29px;text-align:center;font-size:14px; width:56px;background:url(../images/prev.png) left center no-repeat;}
+#page_div .pagination_index a, #page_div .pagination_index_num a{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index a:hover, #page_div .pagination_index_num a:hover{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index1{border:1px #cccccc solid;padding:0 8px; margin:0 4px;float: left; height:29px; line-height:29px;text-align:center;font-size:14px; width:56px;background:url(../images/next.png) right center no-repeat;}
+#page_div .pagination_index1 a, #page_div .pagination_index_num a{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+#page_div .pagination_index1 a:hover, #page_div .pagination_index_num a:hover{padding:0px; margin:0px;text-align:center;  color:#666666;font-size:14px;}
+
+#page_div .pagination_index_last{float:right;font-size:14px; margin-left:10px; line-height:29px; color:#000;}
+/* ========="��ҳ"��ʽ=========*/
+
+#page_div .pagination_index_num{width:10px;padding:0 8px; margin:0 4px;float: left; height:29px; line-height:29px;text-align:center;font-size:14px; border:1px solid #ccc;}
+#page_div .currentIndex{ background:#999; border:1px solid #999;height:29px;
+line-height:29px; color:#FFF;text-align:center; font-weight:bold;font-size:14px;} /*=========��ǰҳ����ʽ=========*/
+/*-------------------------------���ҳ��ʽ�����---------------------------------------*/
